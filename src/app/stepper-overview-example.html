@@ -1,17 +1,33 @@
-<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-</button>
-<mat-stepper [linear]="isLinear" orientation="vertical" #stepper>
-  <mat-step [stepControl]="firstFormGroup">    
-      <ng-template matStepLabel>Step 1</ng-template>     
-  </mat-step>  
-  <mat-step [stepControl]="secondFormGroup" label="Step 2">   
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>   
-  </mat-step>
-</mat-stepper>
+<div>
+  <div class="stepper-container">
+    <mat-stepper orientation="vertical" 
+    (selectionChange)="onSelectionChange($event)" #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <ng-template matStepLabel>Step 1</ng-template>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup" label="Step 2"> </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+      </mat-step>
+    </mat-stepper>
+  </div>
+  <div class="form-container">
+  <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
+  </div>
+</div>
 
+<!-- form templates -->
+<ng-template #step1>
+  <h4>Step 1</h4>
+</ng-template>
+
+<ng-template #step2>
+<h4>Step 2</h4>
+</ng-template>
+
+<ng-template #done>
+<h4>Done</h4>
+</ng-template>
 
 <!-- Copyright 2023 Google LLC. All Rights Reserved.
     Use of this source code is governed by an MIT-style license that
