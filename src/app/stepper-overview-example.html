@@ -6,6 +6,7 @@
         <ng-template matStepLabel>Step 1</ng-template>
       </mat-step>
       <mat-step [stepControl]="secondFormGroup" label="Step 2"> </mat-step>
+      <mat-step [stepControl]="thirdFormGroup" label="Step 3"> </mat-step>
       <mat-step>
         <ng-template matStepLabel>Done</ng-template>
       </mat-step>
@@ -24,6 +25,10 @@
 <ng-template #step2>
 <h4>Step 2</h4>
 </ng-template>
+
+<ng-template #step3>
+  <h4>Step 3</h4>
+  </ng-template>
 
 <ng-template #done>
 <h4>Done</h4>

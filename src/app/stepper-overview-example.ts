@@ -18,12 +18,42 @@ export class StepperOverviewExample implements OnInit,AfterViewInit {
   secondFormGroup = this._formBuilder.group({
     secondCtrl: ['', Validators.required],
   });
+  thirdFormGroup = this._formBuilder.group({
+    secondCtrl: ['', Validators.required],
+  });
   @ViewChild('stepper') stepper: MatStepper;
   @ViewChild('step1') step1: TemplateRef<HTMLElement>;
   @ViewChild('step2') step2: TemplateRef<HTMLElement>;
+  @ViewChild('step3') step3: TemplateRef<HTMLElement>;
   @ViewChild('done') done: TemplateRef<HTMLElement>;
 
   formTemplate: TemplateRef<HTMLElement>;
+
+  stepperConfig = [
+    {
+      step: {
+        label: 'Form Details',
+        stepControl: this.firstFormGroup
+      }
+    },
+    {
+      step: {
+        label: 'Assessment',
+        stepControl: this.secondFormGroup
+      }
+    },
+    {
+      step: {
+          label: 'Configurations',
+          stepControl: this.thirdFormGroup
+      }   
+    },
+    {
+      step: {
+          label: 'Done'
+      }
+    }
+  ];
   
   constructor(private _formBuilder: FormBuilder) {}
 
@@ -33,7 +63,7 @@ export class StepperOverviewExample implements OnInit,AfterViewInit {
 
   ngAfterViewInit() {
     this.formTemplate = this.step1;
-    this.stepper.selectedIndex = 2;
+   // this.stepper.selectedIndex = 2;
   }
 
   onSelectionChange(event: StepperSelectionEvent) {
@@ -43,6 +73,9 @@ export class StepperOverviewExample implements OnInit,AfterViewInit {
         break;
       case 1:
         this.formTemplate = this.step2;
+        break;
+      case 2:
+        this.formTemplate = this.step3;
         break;
       default:
         this.formTemplate = this.done;
