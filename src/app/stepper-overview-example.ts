@@ -50,8 +50,7 @@ export class StepperOverviewExample implements OnInit,AfterViewInit {
     },
     {
       step: {
-          label: 'Done',
-          stepControl: this.thirdFormGroup
+          label: 'Done'          
       }
     }
   ];
